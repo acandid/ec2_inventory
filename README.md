@@ -15,9 +15,12 @@ pip install boto3
 
 Attention
 ---------
-If the public DNS is dynamic, the ansible_host option is only filled when the server is started
+If the public DNS is dynamic, the ansible_host option is only filled when the server is started.
 
-Create inventory groups using tags modify as you use them in your environment
+Create inventory groups using tags modify as you use them in your environment.
+
+In my case I used it as follows in ec2_instances_facts.yml.
+
 
 
 Role Variables
