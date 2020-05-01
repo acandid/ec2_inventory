@@ -17,6 +17,9 @@ Attention
 ---------
 If the public DNS is dynamic, the ansible_host option is only filled when the server is started
 
+Create inventory groups using tags modify as you use them in your environment
+
+
 Role Variables
 --------------
 
