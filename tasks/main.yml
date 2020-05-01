@@ -1,0 +1,12 @@
+---
+# tasks file for ec2_inventory
+#
+- name: Include credential file
+  include_vars: credentials.yml
+#
+- name: Import task ec2_instances_facts.yml
+  import_tasks: ec2_instances_facts.yml
+#
+- name: Import task create_inventory_file.yml
+  import_tasks: create_inventory_file.yml
+... 

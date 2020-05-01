@@ -1,0 +1,42 @@
+---
+- name: All instances for Region {{ ec2_inventory_region }}
+  ec2_instance_info:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ ec2_inventory_region }}"
+  register: result
+  tags: all_server
+#
+- name: Production Environment
+  ec2_instance_info:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ ec2_inventory_region }}"
+    filters:
+      "tag:Environment": Production
+  register: result_production
+  tags: servers_from_tags
+#
+- name: Homologation Environment
+  ec2_instance_info:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ ec2_inventory_region }}"
+    filters:
+      "tag:Environment": Homologation
+  register: result_homologation
+  tags: servers_from_tags
+#
+- name: Development Environment
+  ec2_instance_info:
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    region: "{{ ec2_inventory_region }}"
+    filters:
+      "tag:Environment": Development
+  register: result_development
+  tags: servers_from_tags
+#
+- debug:
+    msg: "Successfully created inventory: {{ ec2_inventory_path }}{{ec2_inventory_name }}_{{ ec2_inventory_region }}"
+...

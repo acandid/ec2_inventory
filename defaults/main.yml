@@ -1,0 +1,8 @@
+---
+# defaults file for ec2_inventory
+#
+ec2_inventory_path: /home/ansible/aws/
+#
+ec2_inventory_name: inventory
+#
+ec2_inventory_path_key: /home/ansible/aws/key/

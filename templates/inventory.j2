@@ -1,0 +1,38 @@
+# Inventory AWS Region {{ ec2_inventory_region }} 
+
+{% if result.instances != '' %}
+{% for ec2 in result.instances %}
+{% if loop.first %}
+[all]
+{% endif %}
+{{ ec2.tags.Name }}  ansible_host={{ ec2.public_dns_name }}   ansible_ssh_private_key_file={{ ec2_inventory_path_key }}{{ ec2.key_name }}.pem
+{% endfor %}
+{% endif %}
+
+{% if result_production.instances != '' %}
+{% for ec2 in result_production.instances %}
+{% if loop.first %}
+[{{ ec2.tags.Environment }}]
+{% endif %}
+{{ ec2.tags.Name }}  ansible_host={{ ec2.public_dns_name }}   ansible_ssh_private_key_file={{ ec2_inventory_path_key }}{{ ec2.key_name }}.pem
+{% endfor %}
+{% endif %}
+
+{% if result_homologation.instances != '' %}
+{% for ec2 in result_homologation.instances %}
+{% if loop.first %}
+[{{ ec2.tags.Environment }}]
+{% endif %}
+{{ ec2.tags.Name }}  ansible_host={{ ec2.public_dns_name }}    ansible_ssh_private_key_file={{ ec2_inventory_path_key }}{{ ec2.key_name }}.pem
+{% endfor %}
+{% endif %}
+
+{% if result_development.instances != '' %}
+{% for ec2 in result_development.instances %}
+{% if loop.first %}
+[{{ ec2.tags.Environment }}]
+{% endif %}
+{{ ec2.tags.Name }}  ansible_host={{ ec2.public_dns_name }}     ansible_ssh_private_key_file={{ ec2_inventory_path_key }}{{ ec2.key_name }}.pem
+{% endfor %}
+{% endif %}
+

@@ -1,0 +1,7 @@
+---
+- name: Create inventory file
+  template:
+    src: inventory.j2
+    dest: "{{ ec2_inventory_path }}{{ec2_inventory_name }}_{{ ec2_inventory_region }}"
+    backup: yes
+...
