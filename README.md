@@ -21,6 +21,16 @@ Create inventory groups using tags modify as you use them in your environment.
 
 In my case I used it as follows in ec2_instances_facts.yml.
 
+    filters:
+      "tag:Environment": Production
+
+
+    filters:
+      "tag:Environment": Homologation
+
+
+    filters:
+      "tag:Environment": Development
 
 
 Role Variables
